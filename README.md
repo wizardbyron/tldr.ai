@@ -42,7 +42,7 @@ cp .env.example .env
 LLM_SERVICE=chatglm.cpp # 用于 chatglm.cpp 本地 langchain api
 LLM_ENDPOINT=http://127.0.0.1:8000 # 用于本地 chatglm.cpp 的 url
 # LLM_SERVICE=zhipuai
-# MODEL_TYPE=chatglm_turbo
+# MODEL_TYPE=glm-4
 # ZHIPU_API_KEY=<YOUR-API-KEY> # 在智谱 AI 平台上申请的 API KEY
 ```
 

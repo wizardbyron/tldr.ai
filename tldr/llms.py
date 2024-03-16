@@ -1,11 +1,11 @@
 import os
 
 from dotenv import load_dotenv
-from langchain_community.chains import LLMChain
+from langchain.chains import LLMChain
 from langchain_community.llms import ChatGLM
-from langchain_community.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
-import zhipuai
+from zhipuai import ZhipuAI
 
 
 def llm_process(input, model="default"):
@@ -51,17 +51,18 @@ def zhipuai_api(prompt: str, model_type: str) -> str:
     """
     使用Zhipuai的LLM模型，返回代码
     """
-    zhipuai.api_key = os.environ.get("ZHIPU_API_KEY")
+    client = ZhipuAI(api_key=os.environ.get("ZHIPU_API_KEY"))
 
-    response = zhipuai.model_api.invoke(
+    response = client.chat.completions.create(
         model=model_type,
         top_p=0.9,
         temperature=0.01,
-        prompt=[{"role": "user", "content": prompt}],
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
     )
 
-    if response["success"]:
-        content = response["data"]["choices"][0]["content"]
-        return eval(f"{content}")
-    else:
-        return f"【错误信息】: {response['msg']}"
+    return response.choices[0].message.content

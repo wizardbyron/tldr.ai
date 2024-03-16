@@ -4,3 +4,4 @@ python-dotenv
 zhipuai
 bs4
 html2text
+tqdm
