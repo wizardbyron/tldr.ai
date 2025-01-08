@@ -1,5 +1,5 @@
 fire
-langchain
+langchain-community
 python-dotenv
 zhipuai
 bs4
