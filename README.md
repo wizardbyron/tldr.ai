@@ -4,13 +4,10 @@
 
 `tldr.ai` 的功能很简单，仅仅是通过 [langchain] 获得目标 URL 的网页内容，并通过大语言模型形成摘要。
 
-目前支持的大语言模型:
-
-- [chatglm.cpp](https://github.com/li-plus/chatglm.cpp)
-
 目前支持的 LLM 在线服务:
 
 - [智谱 AI](https://https://open.bigmodel.cn//)
+- [DeepSeek](https://www.deepseek.com/)
 
 ## 安装
 
@@ -39,11 +36,10 @@ cp .env.example .env
 调整 `.env` 文件中的配置项：
 
 ```yaml
-LLM_SERVICE=chatglm.cpp # 用于 chatglm.cpp 本地 langchain api
-LLM_ENDPOINT=http://127.0.0.1:8000 # 用于本地 chatglm.cpp 的 url
-# LLM_SERVICE=zhipuai
-# MODEL_TYPE=glm-4
-# ZHIPU_API_KEY=<YOUR-API-KEY> # 在智谱 AI 平台上申请的 API KEY
+SERVICE=zhipuai # 默认 zhipuai，或者 deepseek
+MODEL=glm-4-flash # 默认 glm-4-flash，或者 deepseek-chat
+# ZHIPUAI_API_KEY=<YOUR-API-KEY> # 在智谱 AI 平台上申请的 API KEY
+# OPENAI_API_KEY=<YOUR-API-KEY> # 在DEEPSEEK AI 平台上申请的 API KEY
 ```
 
 ### 4. 运行
